@@ -109,6 +109,9 @@ Also we have made some recognition and classification with our model. Some examp
 
 
 
+YOLOv5 LICENSE: https://github.com/Okery/YOLOv5-PyTorch/blob/master/LICENSE
+
+
 TODO TASKS:
 - [X] Select a pre-trained model
 - [X] Conduct first experiment with existing labeled data
