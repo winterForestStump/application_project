@@ -1,0 +1,1 @@
+docker run -it --rm -p 3000:3000 yolo_v5_demo:owwlnyx5fkcp2cdk serve
