@@ -139,7 +139,7 @@ The sample service provides two different endpoints:
 * For /invocation option "Try it out" button. Choose file for sign detection. Push "Execute" button.On response: code 200 and json file with boundaries coordinates, confidence of classification, class number (from the class_names.txt file) and class names.
 * For /render option push "Try it out" button. Choose file for sign detection. Push "Execute" button. On response: code 200 and link to "Download file" of the picture with detected signs
 
-There are some [pictures of the trucks](test_pictures) hich you can use for model and service testing.
+There are some [pictures of the trucks](test_pictures) which you can use for model and service testing.
 
 TODO TASKS:
 - [X] Use BentoML to deploy the model
