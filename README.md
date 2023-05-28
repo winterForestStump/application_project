@@ -27,8 +27,9 @@ We analyzed the data and came to the following conclusions:
 * the specific photos have the same names in all zip folders
 * the most suitable photos for use in ML and DL models have the following names and characteristics
 
+<img width="337" alt="2023-05-28 12_52_58-227512259-32dc0d38-3443-4719-a528-aaa600b4ff4e png (1101×576)" src="https://github.com/Stump-rus/application_project/assets/101496738/2174f923-c57b-4225-b08a-0f2d9058a7c3">
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/101496738/227512259-32dc0d38-3443-4719-a528-aaa600b4ff4e.png">
+
 
 * we also discussed with the company the accuracy of the current system of recognition of dangerous signs and received the answer that the accuracy is not known because the system is not used in current activities
 * after discussion and analysis, we decided that the most appropriate photos for training would be those taken from the back of the vehicle and titled “snapshot-chassis0-Isback-full.jpg”
@@ -71,8 +72,13 @@ TODO TASKS:
 ### 3. Working with DL model: 
 For the training we have chosen [YOLOv5](https://pytorch.org/hub/ultralytics_yolov5/) model. It is a compound-scaled object detection model trained on the COCO dataset, and includes simple functionality for Test Time Augmentation (TTA), model ensembling, hyperparameter evolution, and export to ONNX, CoreML and TFLite.
 
+YOLOv5 LICENSE: https://github.com/ultralytics/yolov5/blob/master/LICENSE
+
 We decided to use medium size YOLOv5m model:
+
 <img width="528" alt="2023-05-15 19_53_02-ultralytics_yolov5_ YOLOv5" src="https://github.com/Stump-rus/application_project/assets/101496738/c8a937bc-d3e8-4a57-908d-f503b09d2251">
+
+The architecture of the [YOLOv5](model_architecture.png) model
 
 We used the currently available marked-up photos in the following proportions: 2,270 for the training session and 200 for the test session. We also added 265 background images. Background images are images with no objects that are added to a dataset to reduce False Positives (FP). It is recommended about 0-10% background images to help reduce FPs. No labels are required for background images. The [Notebook](YOLOv5m_model.ipynb) with the code,training and test results.
 
@@ -103,8 +109,6 @@ Also we have made some recognition and classification with our model. Some examp
 ![val_batch2_labels](https://github.com/Stump-rus/application_project/assets/101496738/1e4f79e5-508b-47b2-9795-5ca750f7a80a)
 
 
-
-YOLOv5 LICENSE: https://github.com/ultralytics/yolov5/blob/master/LICENSE
 
 
 TODO TASKS:
