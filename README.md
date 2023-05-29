@@ -46,14 +46,14 @@ TODO TASKS:
 
 
 ### 2. Labeling the data: 
-In order for the model to detect and recognize the sign on the photo, we were needed to mark up and assign labels to each sign. For these purposes we used [MakeSense.ai](https://www.makesense.ai/). On their website they are declaring that: 
+In order for the model to detect and recognize the dangerous goods signs in the photos, we needed to mark up and assign labels to each sign. For this purpose we used [MakeSense.ai](https://www.makesense.ai/). It is an online labelling tool that is: 
 * Open source and free to use under GPLv3 license
-* No advanced installation required, browser usage
-* They don't store the images, because they don't send them anywhere
-* Support multiple label types - rects, lines, points and polygons (we are using polygons)
-* Support output file formats like YOLO, VOC XML, VGG JSON, CSV (we are using YOLO)
+* Requires no advanced installation. Aceesible via web browser.
+* Does not store the images nor transmit images.
+* Supports multiple label types - rects, lines, points and polygons (in thgis project we use rectangles)
+* Supports output file formats like YOLO, VOC XML, VGG JSON, CSV (we are using YOLO)
 
-So far we have analyzed about 70K photos and received 2,470 labeled photos. We used photos from only one gate (ICG02) taken during the throughout the year, so as to get pictures of different day time (day, evening, night, morning) and time of the year.  We have 12 classes of very uneven distributed signs:
+So far we have analyzed about 70K photos and received 2,470 labeled photos. We used photos from only one gate (ICG02) taken throughout the year, so as to get pictures of different times of the day (day, evening, night, morning) and periods of the year.  In total, we have 12 classes of signs with a very uneven distribution:
 Labels distributions for the previous dataset (41K photos analyzed, 1,400 labeled photos):
 
 <img width="326" alt="2023-05-15 19_46_15-233804454-c8aeaf04-4dc8-44d3-b63e-d626f3a6fc9a png (359×529)" src="https://github.com/Stump-rus/application_project/assets/101496738/8a6bda65-57dc-43c3-a300-edc9905a6749">
@@ -61,7 +61,7 @@ Labels distributions for the previous dataset (41K photos analyzed, 1,400 labele
 Labels distributions for the new dataset (70K photos analyzed, 2,470 labeled photos):
 <img width="326" alt="2023-05-15 19_44_25-labels jpg ‎- Photos" src="https://github.com/Stump-rus/application_project/assets/101496738/dba98943-75b7-4905-a4bb-ef59c350fdb5">
 
-We still have unbalansed data, but as the results of the model test indicate that this is not a significant problem.
+The classes remain unbalnced, but as the results of the model test indicates, this is not a significant problem.
 
 TODO TASKS:
 - [X] Choose the labeling tool and start labeling
