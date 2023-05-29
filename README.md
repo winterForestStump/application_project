@@ -127,9 +127,9 @@ TODO TASKS:
 **UPDATE:**
 
 For deploying the model we used [BentoML](https://www.bentoml.com/) platform. Containerizing as Docker image allows users to easily test out environment and dependency configurations locally. Once Bentos are built and saved to the bento store, we can containerize saved bentos with the CLI command: bentoml containerize.
-We created a docker image **yolo_v5_demo:owwlnyx5fkcp2cdk** (5.92 GB) which can be run locally.
+We created a docker image **stumprus/application_project:yolov5m_fh** (5.92 GB) which can be run locally.
 
-Run the command **docker run -it --rm -p 3000:3000 yolo_v5_demo:owwlnyx5fkcp2cdk serve** and visit **http://127.0.0.1:3000** (for me port 3000 didn't work and I changed it to the 5000, which worked fine)
+Run the command **docker run -it --rm -p 3000:3000 stumprus/application_project:yolov5m_fh serve** and visit **http://127.0.0.1:3000** (for me port 3000 didn't work and I changed it to the 5000, which worked fine)
 
 The sample service provides two different endpoints:
 * `/invocation` - takes an image input and returns predictions in a tabular data format
