@@ -19,7 +19,7 @@ From the LHG we received HDD with more than 6 TB of pictures of trucks on it. Th
 - Folder with the name of the gate (since there are 4 gates (two at the entrance and two at the exit) 4 folders in total)
   - Folders for each day (365 folders)
     - Zip folders for each vehicle (the number of archived folders corresponds to the number of vehicles passed through the gate per day)
-      - Pictures of the vehicles (in average of about 40 photos: photos of tractor unit and trailer from different angles, photos of license plates and distinguishing marks, etc.)
+      - Pictures of the vehicles (about 40 photos on average: photos of tractor unit and trailer from different angles, photos of license plates and distinguishing marks, etc.)
 
 We analyzed the data and came to the following conclusions:
 * each zip folder has a unique name, including the timestamp with the YYYYMMDD-HHMMSS format
