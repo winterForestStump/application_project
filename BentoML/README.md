@@ -6,7 +6,7 @@ Install required dependencies:
 pip install -r ./requirements.txt
 ```
 
-The model is divided in parts and archieved into the 'yolo5m_model' folder. After unzipping you should have a `yolov5s.pt` file created in current directory (don't be confused by the 's' at the name of the file, it is still medium 'm' sized model).
+The model is divided in parts and archived into the 'yolo5m_model' folder. After unzipping you should have a `yolov5s.pt` file created in current directory (don't be confused by the 's' suffix in the file name; it is still the medium 'm' sized model).
 
 ## Run the service
 
@@ -38,7 +38,7 @@ curl -X 'POST' \
 
 ## Build Bento
 
-The `bentofile.yaml` have configured all required system packages and python dependencies. 
+The `bentofile.yaml` configures all required system packages and python dependencies. 
 
 ```bash
 bentoml build
