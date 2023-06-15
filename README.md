@@ -2,9 +2,9 @@
 
 ## Task description:
 The central focus of this project is **the implementation of an ML solution for the identification and classification of dangerous goods labels on trailers**. Beyond that optionally additional functionalities can be added, which will be implemented depending on the time available:
-* Integration and comparison with existing booking data from the LHG logistics system
-* Display of deviations in a web frontend
-* Implementation of a push mechanism (e-mail) for notification of deviations
+* (Otional) Integration and comparison with existing booking data from the LHG logistics system
+* (Otional) Display of deviations in a web frontend
+* (Otional) Implementation of a push mechanism (e-mail) for notification of deviations
 The language and technology used to implement the requirements can be freely selected. For a possible integration into the IT system landscape of the LHG a Docker container is suitable.
 
 The LHG provides the following data:
@@ -95,9 +95,9 @@ We trained the model on Google Colab free account using the GPU computing power.
 ![results](https://github.com/Stump-rus/application_project/assets/101496738/f6944082-51fa-4bba-888a-0040e04a6bf7)
 
 
+
 ***Test results***:
 We tested the model on the test dataset of 200 pictures (different classes and background pictures). The results are the following:
-Once the Bento is built, containerize it as a Docker image for deployment:
 
 | Class | Images| Instances | P | R | mAP50 | mAP50-95|
 | ----- | ------| --------- | - | - | ----- | --------|
@@ -157,3 +157,12 @@ TODO TASKS:
 - [ ] (optional) Integrate and compare with existing booking data from the LHG logistics system
 - [ ] (optional) Display deviations in a web frontend
 - [ ] (optional) Implement a push mechanism (e-mail) for notification of deviations
+
+
+## Further suggests and recommendations:
+- Increase dataset size.
+  - Images per class. ≥ 1500 images per class recommended
+  - Instances per class. ≥ 10000 instances (labeled objects) per class recommended
+- Image variety. Add images from different angles. 
+- Try different training settings: more epochs (>100), larger size images (1280), larger batch sizes (>32), fine-tune hyperparameters
+- Try model of large size (YOLOv5l: 46.5 million parameters)
