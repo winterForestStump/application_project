@@ -84,7 +84,7 @@ The architecture of the [YOLOv5](model_architecture.png) model
 **Training dataset**. We used the currently available marked-up photos in the following proportions: 2,270 for the training session and 200 for the test session. We also added 265 background images. Background images are images with no objects that are added to a dataset to reduce False Positives (FP). It is recommended about 0-10% background images to help reduce FPs. No labels are required for background images. We used images from different times of day, different seasons, different weather, different lighting. The [Notebook](YOLOv5m_model.ipynb) with the code,training and test results.
 
 **Training Settings**. 
-+ Epochs - 100. WE received good results wwith 100 epochs. 
++ Epochs - 100.
 + Image size - 640. COCO trains at native resolution of *--img 640*, though due to the high amount of small objects in the dataset it can benefit from training at higher resolutions such as *--img 1280*. Best inference results are obtained at the same *--img* as the training was run at, i.e. we trained at *--img 640* and than also tested and detected at *--img 640*.
 + Batch size - 16. The largest *--batch-size* that the hardware allows should be used
 + Hyperrparameters - Default. It is recommended to train the model with default hyperparameters first. In general, increasing augmentation hyperparameters will reduce and delay overfitting, allowing for longer trainings and higher final mAP. Reduction in loss component gain hyperparameters like hyp['obj'] will help reduce overfitting in those specific loss components. There is an automated method of optimizing hyperparameters (Hyperparameter Evolution).
