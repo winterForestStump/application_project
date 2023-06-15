@@ -70,20 +70,30 @@ TODO TASKS:
 
 
 ### 3. Working with DL model: 
-For the training we have chosen [YOLOv5](https://pytorch.org/hub/ultralytics_yolov5/) model. It is a compound-scaled object detection model trained on the COCO dataset, and includes simple functionality for Test Time Augmentation (TTA), model ensembling, hyperparameter evolution, and export to ONNX, CoreML and TFLite.
+For the training we have chosen [YOLOv5](https://pytorch.org/hub/ultralytics_yolov5/) model. It is a compound-scaled object detection model trained on the COCO dataset (330K images (>200K labeled), 1.5 million object instances, 80 object categories), and includes simple functionality for Test Time Augmentation (TTA), model ensembling, hyperparameter evolution, and export to ONNX, CoreML and TFLite.
 
-YOLOv5 LICENSE: https://github.com/ultralytics/yolov5/blob/master/LICENSE
+YOLOv5 APGPL-3.0 LICENSE: https://github.com/ultralytics/yolov5/blob/master/LICENSE
 
-We decided to use medium size YOLOv5m model:
+**Model Selection**. We decided to use medium size YOLOv5m model, we think this is a good compromise between the speed and the accuracy:
 
 <img width="528" alt="2023-05-15 19_53_02-ultralytics_yolov5_ YOLOv5" src="https://github.com/Stump-rus/application_project/assets/101496738/c8a937bc-d3e8-4a57-908d-f503b09d2251">
 
+Larger models like YOLOv5x and YOLOv5x6 will produce better results in nearly all cases, but have more parameters, require more CUDA memory to train, and are slower to run.
 The architecture of the [YOLOv5](model_architecture.png) model
 
-We used the currently available marked-up photos in the following proportions: 2,270 for the training session and 200 for the test session. We also added 265 background images. Background images are images with no objects that are added to a dataset to reduce False Positives (FP). It is recommended about 0-10% background images to help reduce FPs. No labels are required for background images. The [Notebook](YOLOv5m_model.ipynb) with the code,training and test results.
+**Training dataset**. We used the currently available marked-up photos in the following proportions: 2,270 for the training session and 200 for the test session. We also added 265 background images. Background images are images with no objects that are added to a dataset to reduce False Positives (FP). It is recommended about 0-10% background images to help reduce FPs. No labels are required for background images. We used images from different times of day, different seasons, different weather, different lighting. The [Notebook](YOLOv5m_model.ipynb) with the code,training and test results.
+
+**Training Settings**. 
++ Epochs - 100. WE received good results wwith 100 epochs. 
++ Image size - 640. COCO trains at native resolution of *--img 640*, though due to the high amount of small objects in the dataset it can benefit from training at higher resolutions such as *--img 1280*. Best inference results are obtained at the same *--img* as the training was run at, i.e. we trained at *--img 640* and than also tested and detected at *--img 640*.
++ Batch size - 16. The largest *--batch-size* that the hardware allows should be used
++ Hyperrparameters - Default. It is recommended to train the model with default hyperparameters first. In general, increasing augmentation hyperparameters will reduce and delay overfitting, allowing for longer trainings and higher final mAP. Reduction in loss component gain hyperparameters like hyp['obj'] will help reduce overfitting in those specific loss components. There is an automated method of optimizing hyperparameters (Hyperparameter Evolution).
+With more computational power more experiments can be done with fine-tuning hyperparameters.
+
 
 We trained the model on Google Colab free account using the GPU computing power. Training process (100 epochs, 16 batches) took about 3.5 hours. After the training we have received following results:
 ![results](https://github.com/Stump-rus/application_project/assets/101496738/f6944082-51fa-4bba-888a-0040e04a6bf7)
+
 
 ***Test results***:
 We tested the model on the test dataset of 200 pictures (different classes and background pictures). The results are the following:
