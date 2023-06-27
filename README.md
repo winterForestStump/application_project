@@ -116,7 +116,6 @@ Confusion matrix after testing:
 
 Also we have made some recognition and classification with our model. Some examples of the recognized signs:
 ![val_batch0_labels](https://github.com/Stump-rus/application_project/assets/101496738/7cab6a84-8410-49f9-b27a-f4a430a706db)
-![val_batch2_labels](https://github.com/Stump-rus/application_project/assets/101496738/1e4f79e5-508b-47b2-9795-5ca750f7a80a)
 
 
 
