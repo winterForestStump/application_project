@@ -1,21 +1,17 @@
-# Application Project: Dangerous goods label classification for Lübecker Hafen-Gesellschaft mbH (LHG)
+# Application Project: Dangerous goods label classification
 
 ## Task description:
-The central focus of this project is **the implementation of an ML solution for the identification and classification of dangerous goods labels on trailers**. Beyond that optionally additional functionalities can be added, which will be implemented depending on the time available:
-* (Otional) Integration and comparison with existing booking data from the LHG logistics system
-* (Otional) Display of deviations in a web frontend
-* (Otional) Implementation of a push mechanism (e-mail) for notification of deviations
-The language and technology used to implement the requirements can be freely selected. For a possible integration into the IT system landscape of the LHG a Docker container is suitable.
+The central focus of this project is **the implementation of an ML solution for the identification and classification of dangerous goods labels on trailers**. The language and technology used to implement the requirements can be freely selected. For a possible integration into the IT system landscape a Docker container is suitable.
 
-The LHG provides the following data:
+The following data is provided:
 ·   	Image material of the scan system of all units for one year.
-·   	Booking data for the units for one year as an export from the LHG logistics system in Excel format
+·   	Booking data from the logistics system for the units for one year as an export in Excel format
 
 
 ## Implementation plan: 
 
 ### 1. Collecting and preprocessing the data: 
-From the LHG we received HDD with more than 6 TB of pictures of trucks on it. The total number of photos is about 2.3 million. The directory structure is as follows:
+We received HDD with more than 6 TB of pictures of trucks on it. The total number of photos is about 2.3 million. The directory structure is as follows:
 - Folder with the name of the gate (since there are 4 gates (two at the entrance and two at the exit) 4 folders in total)
   - Folders for each day (365 folders)
     - Zip folders for each vehicle (the number of archived folders corresponds to the number of vehicles passed through the gate per day)
@@ -39,7 +35,7 @@ We have prepared a code [Script for data processing](script_for_extraction_ver2.
 
 
 TODO TASKS:
-- [x] Receive from the LHG all the pictures of trucks. 
+- [x] Receive all the pictures of trucks. 
 - [X] Ask the company about object detection system already implemented (if exist)
 - [x] Prepare the code to retrive data
 - [X] Prepare code for filtering photos
@@ -61,7 +57,7 @@ Labels distributions for the previous dataset (41K photos analyzed, 1,400 labele
 Labels distributions for the new dataset (70K photos analyzed, 2,470 labeled photos):
 <img width="326" alt="2023-05-15 19_44_25-labels jpg ‎- Photos" src="https://github.com/Stump-rus/application_project/assets/101496738/dba98943-75b7-4905-a4bb-ef59c350fdb5">
 
-The classes remain unbalnced, but as the results of the model test indicates, this is not a significant problem.
+The classes remain unbalanced, but as the results of the model test indicates, this is not a significant problem.
 
 TODO TASKS:
 - [X] Choose the labeling tool and start labeling
@@ -114,10 +110,6 @@ We tested the model on the test dataset of 200 pictures (different classes and b
 Confusion matrix after testing:
 ![confusion_matrix](https://github.com/Stump-rus/application_project/assets/101496738/f5a47ffd-6518-4bd4-8087-d638158577ae)
 
-Also we have made some recognition and classification with our model. Some examples of the recognized signs:
-![val_batch0_labels](https://github.com/Stump-rus/application_project/assets/101496738/7cab6a84-8410-49f9-b27a-f4a430a706db)
-
-
 
 
 TODO TASKS:
@@ -127,7 +119,6 @@ TODO TASKS:
 - [X] Check the evaluating metrics of the model (accuracy, precision, recall, F1-score) to measure effectiveness
 - [X] Conduct test experiments with balanced data
 - [X] Train the model with pictures without signs and no-trucks pictures
-- [ ] Fine-tune the model if necessary
 
 
 
@@ -153,9 +144,6 @@ There are some [pictures of the trucks](pictures) from the internet which you ca
 TODO TASKS:
 - [X] Use BentoML to deploy the model
 - [X] Create a Docker container
-- [ ] (optional) Integrate and compare with existing booking data from the LHG logistics system
-- [ ] (optional) Display deviations in a web frontend
-- [ ] (optional) Implement a push mechanism (e-mail) for notification of deviations
 
 
 ## Further suggests and recommendations:
