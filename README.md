@@ -21,12 +21,6 @@ We analyzed the data and came to the following conclusions:
 * each zip folder has a unique name, including the timestamp with the YYYYMMDD-HHMMSS format
 * inside the zip folder specific photos have unique names
 * the specific photos have the same names in all zip folders
-* the most suitable photos for use in ML and DL models have the following names and characteristics
-
-<img width="337" alt="2023-05-28 12_52_58-227512259-32dc0d38-3443-4719-a528-aaa600b4ff4e png (1101×576)" src="https://github.com/Stump-rus/application_project/assets/101496738/2174f923-c57b-4225-b08a-0f2d9058a7c3">
-
-
-
 * we also discussed with the company the accuracy of the current system of recognition of dangerous signs and received the answer that the accuracy is not known because the system is not used in current activities
 * after discussion and analysis, we decided that the most appropriate photos for training would be those taken from the back of the vehicle and titled “snapshot-chassis0-Isback-full.jpg”
 * the company also provided an excel file with the tableu data. We analyzed the file and came to the conclusion that it is difficult to use it in the process of processing and obtaining the necessary photos. So the only identifier of the vehicle in the excel file, which can be used in the identification and filtering of photos is datestamp. In addition, some of the vehicles in the file do not have a mark on the presence of dangerous goods and, accordingly, the sign, while in the photo taken at the specified time at the specified gate, it is present.
@@ -50,12 +44,8 @@ In order for the model to detect and recognize the dangerous goods signs in the 
 * Supports output file formats like YOLO, VOC XML, VGG JSON, CSV (we are using YOLO)
 
 So far we have analyzed about 70K photos and received 2,470 labeled photos. We used photos from only one gate (ICG02) taken throughout the year, so as to get pictures of different times of the day (day, evening, night, morning) and periods of the year.  In total, we have 12 classes of signs with a very uneven distribution:
-Labels distributions for the previous dataset (41K photos analyzed, 1,400 labeled photos):
-
-<img width="326" alt="2023-05-15 19_46_15-233804454-c8aeaf04-4dc8-44d3-b63e-d626f3a6fc9a png (359×529)" src="https://github.com/Stump-rus/application_project/assets/101496738/8a6bda65-57dc-43c3-a300-edc9905a6749">
-
 Labels distributions for the new dataset (70K photos analyzed, 2,470 labeled photos):
-<img width="326" alt="2023-05-15 19_44_25-labels jpg ‎- Photos" src="https://github.com/Stump-rus/application_project/assets/101496738/dba98943-75b7-4905-a4bb-ef59c350fdb5">
+![image](https://github.com/winterForestStump/application_project/assets/101496738/26974534-b6eb-4d59-a60f-46fcacf0ee42)
 
 The classes remain unbalanced, but as the results of the model test indicates, this is not a significant problem.
 
@@ -72,7 +62,8 @@ YOLOv5 APGPL-3.0 LICENSE: https://github.com/ultralytics/yolov5/blob/master/LICE
 
 **Model Selection**. We decided to use medium size YOLOv5m model, we think this is a good compromise between the speed and the accuracy:
 
-<img width="528" alt="2023-05-15 19_53_02-ultralytics_yolov5_ YOLOv5" src="https://github.com/Stump-rus/application_project/assets/101496738/c8a937bc-d3e8-4a57-908d-f503b09d2251">
+![image](https://github.com/winterForestStump/application_project/assets/101496738/1cce01bd-ba56-4a84-a3d6-ec5a733195a5)
+
 
 Larger models like YOLOv5x and YOLOv5x6 will produce better results in nearly all cases, but have more parameters, require more CUDA memory to train, and are slower to run.
 The architecture of the [YOLOv5](model_architecture.png) model
@@ -88,7 +79,8 @@ With more computational power more experiments can be done with fine-tuning hype
 
 
 We trained the model on Google Colab free account using the GPU computing power. Training process (100 epochs, 16 batches) took about 3.5 hours. After the training we have received following results:
-![results](https://github.com/Stump-rus/application_project/assets/101496738/f6944082-51fa-4bba-888a-0040e04a6bf7)
+![image](https://github.com/winterForestStump/application_project/assets/101496738/b7082eea-1869-451c-a6b3-217b4b371fbf)
+
 
 
 
@@ -108,7 +100,8 @@ We tested the model on the test dataset of 200 pictures (different classes and b
 | LQ | 200 | 18 | 0.82 | 0.889 | 0.917 | 0.741 |
 
 Confusion matrix after testing:
-![confusion_matrix](https://github.com/Stump-rus/application_project/assets/101496738/f5a47ffd-6518-4bd4-8087-d638158577ae)
+![image](https://github.com/winterForestStump/application_project/assets/101496738/084cf10f-0ab2-476b-ac94-4b498dbe83c7)
+
 
 
 
@@ -134,7 +127,8 @@ Now the image is in private Docker Hub repository (for reasons of confidentialit
 The sample service provides two different endpoints:
 * `/invocation` - takes an image input and returns predictions in a tabular data format
 * `/render` - takes an image input and returns the input image with boxes and labels rendered on top
-<img width="660" alt="01_BentoML Prediction Service" src="https://github.com/Stump-rus/application_project/assets/101496738/0d01dc79-62ed-4281-958e-66ccc7d450bb">
+![image](https://github.com/winterForestStump/application_project/assets/101496738/70aa58d0-5a28-4330-b74f-4a3b801f4944)
+
 
 * For /invocation option "Try it out" button. Choose file for sign detection. Push "Execute" button.On response: code 200 and json file with boundaries coordinates, confidence of classification, class number (from the class_names.txt file) and class names.
 * For /render option push "Try it out" button. Choose file for sign detection. Push "Execute" button. On response: code 200 and link to "Download file" of the picture with detected signs
